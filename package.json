@@ -1,0 +1,17 @@
+{
+  "name": "js-ecs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Entity.js",
+  "scripts": {
+    "start": "parcel index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "konva": "^2.6.0",
+    "matter-js": "^0.14.2",
+    "shortid": "^2.2.14"
+  }
+}
