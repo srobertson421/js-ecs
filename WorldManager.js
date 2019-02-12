@@ -56,11 +56,15 @@ class WorldManager {
   update() {
     // Engine.update(this.physicsEngine, 1000 / 60);
 
-    Object.keys(this.entities).forEach(key => {
-      const entity = this.entities[key];
-      this.systems.forEach(system => {
-        system(this.stage, this.layers, entity);
-      });
+    // Object.keys(this.entities).forEach(key => {
+    //   const entity = this.entities[key];
+    //   this.systems.forEach(system => {
+    //     system(this.stage, this.layers, entity, this.entities);
+    //   });
+    // });
+
+    this.systems.forEach(system => {
+      system(this.stage, this.layers, this.entities);
     });
 
     window.requestAnimationFrame(() => this.update());
