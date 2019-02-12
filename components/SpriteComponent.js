@@ -1,9 +1,13 @@
 import Konva from 'konva';
+import Component from './Component';
 
-class SpriteComponent {
-  constructor({ path = null, x = 0, y = 0, scale = 1, layer = 'background' }) {
+class SpriteComponent extends Component {
+  constructor({ entity = null, path = null, layer = 'background' }) {
+    super({ entity });
     this.name = 'Sprite';
     this.layer = layer;
+    const x = this.entity.getComponent('Transform').x;
+    const y = this.entity.getComponent('Transform').y;
 
     if(path) {
       const imageObj = new Image();

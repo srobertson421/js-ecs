@@ -13,6 +13,7 @@ class Entity {
 
   addComponent(component) {
     if(!this.components[component.name]) {
+      component.entity = this;
       this.components[component.name] = component;
     }
   }

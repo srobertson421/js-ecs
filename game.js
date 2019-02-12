@@ -4,6 +4,7 @@ import Entity from './Entity';
 import RenderComponent from './components/RenderComponent';
 import TransformComponent from './components/TransformComponent';
 import SpriteComponent from './components/SpriteComponent';
+import PhysicsComponent from './components/PhysicsComponent';
 import getRandomInt from './utils/getRandomInt';
 
 function createCanvas(width = 800, height = 600) {
@@ -20,16 +21,20 @@ function createCanvas(width = 800, height = 600) {
 
   document.getElementById('entity-add').addEventListener('click', () => {
     const newEntity = new Entity();
-    newEntity.addComponent(new RenderComponent());
+    newEntity.addComponent(new RenderComponent({ entity: newEntity }));
     newEntity.addComponent(new TransformComponent({
+      entity: newEntity,
       x: getRandomInt(0, stage.width()),
       y: getRandomInt(0, stage.height()),
     }));
     newEntity.addComponent(new SpriteComponent({
-      x: newEntity.getComponent('Transform').x,
-      y: newEntity.getComponent('Transform').y,
+      entity: newEntity,
       layer: 'foreground',
     }));
+    // newEntity.addComponent(new PhysicsComponent({
+    //   entity: newEntity,
+    //
+    // }));
     world.registerEntity(newEntity);
     console.log(world.entities);
   });

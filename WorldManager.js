@@ -1,4 +1,5 @@
 import Konva from 'konva';
+import { Engine, World } from 'matter-js';
 import renderSystem from './systems/renderSystem';
 
 class WorldManager {
@@ -9,6 +10,8 @@ class WorldManager {
       midground: new Konva.Layer(),
       foreground: new Konva.Layer(),
     }
+    this.physicsEngine = Engine.create();
+    this.physicsWorld = World;
     this.entities = {};
     this.systems = [];
     this.pause = false;
