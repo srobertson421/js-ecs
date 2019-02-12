@@ -31,12 +31,13 @@ function createCanvas(width = 800, height = 600) {
       entity: newEntity,
       layer: 'foreground',
     }));
-    // newEntity.addComponent(new PhysicsComponent({
-    //   entity: newEntity,
-    //
-    // }));
+    newEntity.addComponent(new PhysicsComponent({
+      entity: newEntity,
+      width: newEntity.getComponent('Transform').width,
+      height: newEntity.getComponent('Transform').height,
+      engine: world.physicsEngine,
+    }));
     world.registerEntity(newEntity);
-    console.log(world.entities);
   });
 }
 

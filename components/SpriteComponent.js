@@ -23,8 +23,8 @@ class SpriteComponent extends Component {
       this.sprite = new Konva.Rect({
         x,
         y,
-        width: 50,
-        height: 50,
+        width: this.entity.getComponent('Transform').width,
+        height: this.entity.getComponent('Transform').height,
         fill: 'green',
       });
     }
