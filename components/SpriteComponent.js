@@ -25,7 +25,7 @@ class SpriteComponent extends Component {
         y,
         width: this.entity.getComponent('Transform').width,
         height: this.entity.getComponent('Transform').height,
-        fill: 'green',
+        fill: '#'+Math.floor(Math.random()*16777215).toString(16),
       });
     }
   }
