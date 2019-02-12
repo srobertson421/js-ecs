@@ -16,6 +16,7 @@ class PhysicsComponent extends Component {
       height,
       {
         isStatic,
+        restitution: 1.2,
       },
     );
 
