@@ -1,7 +1,8 @@
 import Konva from 'konva';
 import { Engine, World, Render } from 'matter-js';
-import renderSystem from './systems/renderSystem';
-import physicsSystem from './systems/physicsSystem';
+import RenderSystem from './systems/RenderSystem';
+import PhysicsSystem from './systems/PhysicsSystem';
+import InputSystem from './systems/InputSystem';
 
 class WorldManager {
   constructor(stage, layers = 1) {
@@ -48,8 +49,15 @@ class WorldManager {
   init() {
     Engine.run(this.physicsEngine);
     // Render.run(this.renderer);
-    this.systems.push(renderSystem);
-    this.systems.push(physicsSystem);
+    this.systems.push(new RenderSystem());
+    this.systems.push(new PhysicsSystem());
+    this.systems.push(new InputSystem());
+
+    // Initialize systems
+    this.systems.forEach(system => {
+      system.init();
+    });
+
     window.requestAnimationFrame(() => this.update());
   }
 
@@ -64,7 +72,7 @@ class WorldManager {
     // });
 
     this.systems.forEach(system => {
-      system(this.stage, this.layers, this.entities);
+      system.update(this.stage, this.layers, this.entities);
     });
 
     window.requestAnimationFrame(() => this.update());
